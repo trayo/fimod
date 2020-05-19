@@ -35,13 +35,14 @@ getScript(SCRIPT_SRC)
     return Fimod.require(['text!template/settings.html']).then(([ template ]) => {
       let version;
       try {
-        version = template.match(/Version ([\d\.]+)/)[1];
+        version = template.match(/Version ([\d.]+)/)[1];
       }
       finally {
-        if (version == Fimod.version.substring(0, version.length)) return;
-
-        loadingMessage.innerText = "Version mismatch. Possible incompatibility.";
-        return new Promise(resolve => setTimeout(resolve, 2000));
+        if (version !== Fimod.version.substring(0, version.length)) {
+          loadingMessage.innerText = "Version mismatch. Possible incompatibility.";
+          /* eslint-disable-next-line no-unsafe-finally */
+          return new Promise(resolve => setTimeout(resolve, 2000));
+        }
       }
     });
   })

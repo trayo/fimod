@@ -147,8 +147,8 @@ Fimod.define({
   system: true,
   weight: -1,
 },
-['ui/factory/MenuUi', 'ui/FactoryUi'],
-(MenuUi, FactoryUi) => {
+['ui/factory/MenuUi'],
+(MenuUi) => {
   insertStyle(style);
 
   function showFimodMenu() {

@@ -12,10 +12,12 @@
     "no-console": 0,
     "comma-dangle": [2, "only-multiline"],
     "semi": [2, "always"],
-    "no-unused-vars": [2, { "argsIgnorePattern": "^_" }]
+    "no-unused-vars": [2, { "argsIgnorePattern": "^_" }],
+    "linebreak-style": [2, "unix"]
   },
   "globals": {
     "Promise": true,
     "$": true
-  }
+  },
+  "ignorePatterns": ["dist"],
 }
