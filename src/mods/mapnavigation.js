@@ -3,13 +3,14 @@ import Fimod from '../fimod';
 import { insertStyle } from '../lib/utility';
 import { clamp } from '../lib/common'; 
 
-const css = `canvas { 
-	image-rendering: optimizeSpeed; 
-	image-rendering: -moz-crisp-edges; 
-	image-rendering: -webkit-optimize-contrast; 
-	image-rendering: -o-crisp-edges; 
-	image-rendering: pixelated; 
-	-ms-interpolation-mode: nearest-neighbor; 
+const css = `
+#gameArea .magnified canvas { 
+  image-rendering: optimizeSpeed; 
+  image-rendering: -moz-crisp-edges; 
+  image-rendering: -webkit-optimize-contrast; 
+  image-rendering: -o-crisp-edges; 
+  image-rendering: pixelated; 
+  -ms-interpolation-mode: nearest-neighbor; 
 }
 
 #gameArea .mapContainer > div {
@@ -197,6 +198,8 @@ Fimod.define({
       const py = y / before.height;
 
       map.style.transform = `scale(${scale})`;
+
+      this.container.toggleClass('magnified', scale >= 1);
 
       const after = map.getBoundingClientRect();
 
